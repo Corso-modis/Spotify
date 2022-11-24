@@ -67,7 +67,7 @@ public class BranoMusicale {
 
 	@Override
 	public String toString() {
-		return "BranoMusicale [id=" + id + ", titolo=" + titolo + ", autore=" + autore + ", ascolto=" + ascolto + "]";
+		return "BranoMusicale [id=" + id + ", titolo=" + titolo + ", autore=" + autore + "]";
 	}
 
 	
