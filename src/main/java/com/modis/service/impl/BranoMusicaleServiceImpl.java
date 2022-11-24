@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.modis.entities.BranoMusicale;
 import com.modis.repo.BranoMusicaleRepo;
-import com.modis.service.BranoMusicale;
 import com.modis.service.BranoMusicaleService;
 
 @Service
@@ -24,7 +24,7 @@ public class BranoMusicaleServiceImpl implements BranoMusicaleService {
 
 	@Override
 	public void save(BranoMusicale branoMusicale) {
-		BranoMusicaleService.save(branoMusicale);
+		branoMusicaleRepo.save(branoMusicale);
 	}
 
 	
