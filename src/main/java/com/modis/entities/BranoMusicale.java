@@ -1,5 +1,6 @@
 package com.modis.entities;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -11,26 +12,45 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class BranoMusicale {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	private String titolo;
 	private String autore;
-	
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "branoMusicale")
-	private Set<Ascolto> ascolti;
 
-	public BranoMusicale(Long id, String titolo, String autore, BranoMusicale branoMusicale) {
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "branoMusicale")
+	private Set<Ascolto> ascolti = new HashSet<>();
+
+	private long numeroAscolti;
+
+	public BranoMusicale(Long id, String titolo, String autore) {
 		super();
 		this.id = id;
 		this.titolo = titolo;
 		this.autore = autore;
+		this.numeroAscolti = ascolti.size();
 	}
 
 	public BranoMusicale() {
 		super();
+	}
+
+	public Set<Ascolto> getAscolti() {
+		return ascolti;
+	}
+
+	public void setAscolti(Set<Ascolto> ascolti) {
+		this.ascolti = ascolti;
+	}
+
+	public long getNumeroAscolti() {
+		return numeroAscolti;
+	}
+
+	public void setNumeroAscolti(long numeroAscolti) {
+		this.numeroAscolti = numeroAscolti;
 	}
 
 	public Long getId() {
@@ -57,18 +77,9 @@ public class BranoMusicale {
 		this.autore = autore;
 	}
 
-	public Set<Ascolto> getAscolto() {
-		return ascolti;
-	}
-
-	public void setAscolto(Set<Ascolto> ascolto) {
-		this.ascolti = ascolto;
-	}
-
 	@Override
 	public String toString() {
 		return "BranoMusicale [id=" + id + ", titolo=" + titolo + ", autore=" + autore + "]";
 	}
 
-	
 }
