@@ -1,6 +1,6 @@
 package com.modis.controller;
 
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -26,10 +26,9 @@ public class SpotiControllerRest {
 		this.ascoltoService = ascoltoService;
 	}
 
-	@GetMapping("/brani/api")
+	@GetMapping("/brani/ascolti")
 	public ResponseEntity<List<BranoMusicale>> findBrani() {
 		List<BranoMusicale> brani = branoService.findAll();
-		System.err.println(brani);
 		return new ResponseEntity<>(brani, HttpStatus.OK);
 	}
 
@@ -43,7 +42,11 @@ public class SpotiControllerRest {
 	public ResponseEntity<?> saveAscolto(@PathVariable("id") long id) {
 		BranoMusicale brano = new BranoMusicale();
 		brano.setId(id);
-		ascoltoService.save(new Ascolto(LocalDateTime.now(), brano));
+ 		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+		Ascolto ascolto = new Ascolto();
+		ascolto.setData(timestamp);
+		ascolto.setBranoMusicale(brano);
+		ascoltoService.save(ascolto);
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 
