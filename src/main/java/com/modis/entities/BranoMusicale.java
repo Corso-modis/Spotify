@@ -22,6 +22,7 @@ public class BranoMusicale {
 	private String titolo;
 	private String autore;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "branoMusicale")
 	private List<Ascolto> ascolti;
 
