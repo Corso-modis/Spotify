@@ -1,6 +1,7 @@
 package com.modis.controller;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -20,16 +21,22 @@ import com.modis.service.BranoMusicaleService;
 public class SpotiControllerRest {
 	private BranoMusicaleService branoService;
 	private AscoltoService ascoltoService;
+	private BranoNumeroAscolti branoNumeroAscolti;
 
-	public SpotiControllerRest(BranoMusicaleService branoService, AscoltoService ascoltoService) {
+	public SpotiControllerRest(BranoMusicaleService branoService, AscoltoService ascoltoService,
+			BranoNumeroAscolti branoNumeroAscolti) {
+		super();
 		this.branoService = branoService;
 		this.ascoltoService = ascoltoService;
+		this.branoNumeroAscolti = branoNumeroAscolti;
 	}
 
 	@GetMapping("/brani/ascolti")
-	public ResponseEntity<List<BranoMusicale>> findBrani() {
+	public ResponseEntity<List<BranoNumeroAscolti>> findBrani() {
 		List<BranoMusicale> brani = branoService.findAll();
-		return new ResponseEntity<>(brani, HttpStatus.OK);
+		List<BranoNumeroAscolti> braniX = new ArrayList<BranoNumeroAscolti>();
+		brani.forEach(brano -> braniX.add(new BranoNumeroAscolti(brano)));
+		return new ResponseEntity<>(braniX, HttpStatus.OK);
 	}
 
 	@PostMapping("/brani/api")
@@ -42,7 +49,7 @@ public class SpotiControllerRest {
 	public ResponseEntity<?> saveAscolto(@PathVariable("id") long id) {
 		BranoMusicale brano = new BranoMusicale();
 		brano.setId(id);
- 		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 		Ascolto ascolto = new Ascolto();
 		ascolto.setData(timestamp);
 		ascolto.setBranoMusicale(brano);

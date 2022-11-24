@@ -24,7 +24,6 @@ public class Ascolto {
 
 	@ManyToOne
 	@JoinColumn
-	@JsonIgnore
 	private BranoMusicale branoMusicale;
 
 	public Ascolto(Timestamp date, BranoMusicale branoMusicale) {
