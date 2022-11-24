@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,19 +17,18 @@ import com.modis.entities.Ascolto;
 import com.modis.entities.BranoMusicale;
 import com.modis.service.AscoltoService;
 import com.modis.service.BranoMusicaleService;
+import com.modis.service.BranoNumeroAscolti;
 
 @RestController
+@CrossOrigin
 public class SpotiControllerRest {
 	private BranoMusicaleService branoService;
 	private AscoltoService ascoltoService;
-	private BranoNumeroAscolti branoNumeroAscolti;
 
-	public SpotiControllerRest(BranoMusicaleService branoService, AscoltoService ascoltoService,
-			BranoNumeroAscolti branoNumeroAscolti) {
+	public SpotiControllerRest(BranoMusicaleService branoService, AscoltoService ascoltoService) {
 		super();
 		this.branoService = branoService;
 		this.ascoltoService = ascoltoService;
-		this.branoNumeroAscolti = branoNumeroAscolti;
 	}
 
 	@GetMapping("/brani/ascolti")
