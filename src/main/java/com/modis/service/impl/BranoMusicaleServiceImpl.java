@@ -2,12 +2,15 @@ package com.modis.service.impl;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.stereotype.Service;
 
 import com.modis.entities.BranoMusicale;
 import com.modis.repo.BranoMusicaleRepo;
 import com.modis.service.BranoMusicaleService;
 
+@Transactional
 @Service
 public class BranoMusicaleServiceImpl implements BranoMusicaleService {
 	private BranoMusicaleRepo branoMusicaleRepo;

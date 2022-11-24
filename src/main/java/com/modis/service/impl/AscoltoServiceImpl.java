@@ -2,6 +2,8 @@ package com.modis.service.impl;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.stereotype.Service;
 
 import com.modis.entities.Ascolto;
@@ -11,6 +13,7 @@ import com.modis.service.AscoltoService;
 
 
 @Service
+@Transactional
 public class AscoltoServiceImpl implements AscoltoService{
 	private AscoltoRepo ascoltoRepo;
 	
