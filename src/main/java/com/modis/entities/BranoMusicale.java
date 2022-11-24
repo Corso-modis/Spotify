@@ -1,6 +1,6 @@
 package com.modis.entities;
 
-import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -20,36 +20,25 @@ public class BranoMusicale {
 	private String titolo;
 	private String autore;
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "branoMusicale")
-	private Set<Ascolto> ascolti = new HashSet<>();
-
-	private long numeroAscolti;
+	@OneToMany(mappedBy = "branoMusicale")
+	private List<Ascolto> ascolti;
 
 	public BranoMusicale(String titolo, String autore) {
 		super();
 		this.titolo = titolo;
 		this.autore = autore;
-		this.numeroAscolti = ascolti.size();
 	}
 
 	public BranoMusicale() {
 		super();
 	}
 
-	public Set<Ascolto> getAscolti() {
+	public List<Ascolto> getAscolti() {
 		return ascolti;
 	}
 
-	public void setAscolti(Set<Ascolto> ascolti) {
+	public void setAscolti(List<Ascolto> ascolti) {
 		this.ascolti = ascolti;
-	}
-
-	public long getNumeroAscolti() {
-		return numeroAscolti;
-	}
-
-	public void setNumeroAscolti(long numeroAscolti) {
-		this.numeroAscolti = numeroAscolti;
 	}
 
 	public Long getId() {
@@ -78,7 +67,7 @@ public class BranoMusicale {
 
 	@Override
 	public String toString() {
-		return "BranoMusicale [id=" + id + ", titolo=" + titolo + ", autore=" + autore + "]";
+		return "BranoMusicale [id=" + id + ", titolo=" + titolo + ", autore=" + autore + ", ascolti=" + ascolti + "]";
 	}
 
 }

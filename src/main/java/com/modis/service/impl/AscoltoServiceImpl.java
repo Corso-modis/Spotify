@@ -1,5 +1,7 @@
 package com.modis.service.impl;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.modis.entities.Ascolto;
@@ -24,8 +26,12 @@ public class AscoltoServiceImpl implements AscoltoService{
 
 	@Override
 	public void save(Ascolto ascolto) {
-		ascoltoRepo.findById(ascolto.getId()).orElseThrow(() -> new IllegalArgumentException("Non esiste un ascolto con id " + ascolto.getId()));
 		ascoltoRepo.save(ascolto);
+	}
+
+	@Override
+	public List<Ascolto> findAll() {
+		return ascoltoRepo.findAll();
 	}
 
 }
