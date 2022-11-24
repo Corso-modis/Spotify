@@ -1,18 +1,17 @@
 package com.modis.entities;
 
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
 
 @Entity
 public class Ascolto {
@@ -21,17 +20,16 @@ public class Ascolto {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@JsonDeserialize(using = LocalDateTimeDeserializer.class)
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-	private LocalDateTime data;
+	private Timestamp date;
 
 	@ManyToOne
 	@JoinColumn
+	@JsonIgnore
 	private BranoMusicale branoMusicale;
 
-	public Ascolto(LocalDateTime data, BranoMusicale branoMusicale) {
+	public Ascolto(Timestamp date, BranoMusicale branoMusicale) {
 		super();
-		this.data = data;
+		this.date = date;
 		this.branoMusicale = branoMusicale;
 	}
 
@@ -47,12 +45,12 @@ public class Ascolto {
 		this.id = id;
 	}
 
-	public LocalDateTime getData() {
-		return data;
+	public Timestamp getData() {
+		return date;
 	}
 
-	public void setData(LocalDateTime data) {
-		this.data = data;
+	public void setData(Timestamp date) {
+		this.date = date;
 	}
 
 	public BranoMusicale getBranoMusicale() {
@@ -65,7 +63,7 @@ public class Ascolto {
 
 	@Override
 	public String toString() {
-		return "Ascolto [id=" + id + ", data=" + data + "]";
+		return "Ascolto [id=" + id + ", date=" + date + "]";
 	}
 
 }
