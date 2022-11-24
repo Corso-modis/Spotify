@@ -20,12 +20,17 @@ public class BranoMusicaleServiceImpl implements BranoMusicaleService {
 	@Override
 	public List<BranoMusicale> findAll() {
 		return branoMusicaleRepo.findAll();
-				}
+	}
 
 	@Override
 	public void save(BranoMusicale branoMusicale) {
+		branoMusicaleRepo.findById(branoMusicale.getId()).orElseThrow(() -> new IllegalArgumentException("Non esiste un brano musicale con id " + branoMusicale.getId()));
 		branoMusicaleRepo.save(branoMusicale);
 	}
 
-	
+	@Override
+	public BranoMusicale findById(long id) {
+		return branoMusicaleRepo.findById(id).orElseThrow(() -> new IllegalArgumentException("Non esiste un brano musicale con id " + id));
+	}
+
 }

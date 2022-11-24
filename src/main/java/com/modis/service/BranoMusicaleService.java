@@ -8,4 +8,7 @@ public interface BranoMusicaleService {
 	List<BranoMusicale> findAll();
 	
 	void save(BranoMusicale branoMusicale);
+	
+	BranoMusicale findById(long id);
+	
 }
