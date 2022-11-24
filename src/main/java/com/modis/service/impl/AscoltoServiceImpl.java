@@ -1,9 +1,12 @@
 package com.modis.service.impl;
 
 import org.springframework.stereotype.Service;
-import com.modis.service.Ascolto;
+
+import com.modis.entities.Ascolto;
+import com.modis.entities.BranoMusicale;
+import com.modis.repo.AscoltoRepo;
 import com.modis.service.AscoltoService;
-import com.modis.service.BranoMusicale;
+
 
 @Service
 public class AscoltoServiceImpl implements AscoltoService{
@@ -16,17 +19,12 @@ public class AscoltoServiceImpl implements AscoltoService{
 
 	@Override
 	public long countByBranoMusicale(BranoMusicale branoMusicale) {
-		return ascoltoRepo.countByBranoMusicale(BranoMusicale branoMusicale);
-	}
-
-	@Override
-	public long countByBranoMusicale(BranoMusicale branoMusicale) {
-		return ascoltoRepo.countByBranoMusicale();
+		return ascoltoRepo.countByBranoMusicale(branoMusicale);
 	}
 
 	@Override
 	public void save(Ascolto ascolto) {
 		ascoltoRepo.save(ascolto);
 	}
-	
+
 }

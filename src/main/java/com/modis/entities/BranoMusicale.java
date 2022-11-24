@@ -20,7 +20,7 @@ public class BranoMusicale {
 	private String autore;
 	
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "branoMusicale")
-	private Set<Ascolto> ascolto;
+	private Set<Ascolto> ascolti;
 
 	public BranoMusicale(Long id, String titolo, String autore, BranoMusicale branoMusicale) {
 		super();
@@ -58,11 +58,11 @@ public class BranoMusicale {
 	}
 
 	public Set<Ascolto> getAscolto() {
-		return ascolto;
+		return ascolti;
 	}
 
 	public void setAscolto(Set<Ascolto> ascolto) {
-		this.ascolto = ascolto;
+		this.ascolti = ascolto;
 	}
 
 	@Override
