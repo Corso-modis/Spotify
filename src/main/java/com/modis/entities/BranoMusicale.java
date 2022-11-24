@@ -25,9 +25,8 @@ public class BranoMusicale {
 
 	private long numeroAscolti;
 
-	public BranoMusicale(Long id, String titolo, String autore) {
+	public BranoMusicale(String titolo, String autore) {
 		super();
-		this.id = id;
 		this.titolo = titolo;
 		this.autore = autore;
 		this.numeroAscolti = ascolti.size();

@@ -24,6 +24,7 @@ public class AscoltoServiceImpl implements AscoltoService{
 
 	@Override
 	public void save(Ascolto ascolto) {
+		ascoltoRepo.findById(ascolto.getId()).orElseThrow(() -> new IllegalArgumentException("Non esiste un ascolto con id " + ascolto.getId()));
 		ascoltoRepo.save(ascolto);
 	}
 

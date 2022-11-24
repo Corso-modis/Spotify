@@ -22,9 +22,8 @@ public class Ascolto {
 	private BranoMusicale branoMusicale;
 
 
-	public Ascolto(Long id, LocalDate data, BranoMusicale branoMusicale) {
+	public Ascolto(LocalDate data, BranoMusicale branoMusicale) {
 		super();
-		this.id = id;
 		this.data = data;
 		this.branoMusicale = branoMusicale;
 	}
