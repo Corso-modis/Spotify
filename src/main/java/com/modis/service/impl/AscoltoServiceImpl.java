@@ -1,9 +1,11 @@
 package com.modis.service.impl;
 
+import org.springframework.stereotype.Service;
 import com.modis.service.Ascolto;
 import com.modis.service.AscoltoService;
 import com.modis.service.BranoMusicale;
 
+@Service
 public class AscoltoServiceImpl implements AscoltoService{
 	private AscoltoRepo ascoltoRepo;
 	
