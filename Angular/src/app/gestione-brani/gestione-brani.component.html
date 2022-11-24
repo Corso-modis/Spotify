@@ -1,0 +1,37 @@
+<button (click)="toggleForm()">Aggiungi</button>
+
+<form *ngIf="isVisibile==true" #myForm="ngForm" (ngSubmit)="sendBrano(myForm.value)">
+    <p>
+        <label>Titolo</label>
+        <input type="text" [(ngModel)]="brano.titolo" name="titolo" required>
+    </p>
+    <p>
+        <label>Autore</label>
+        <input type="text" [(ngModel)]="brano.autore" name="autore" required>
+    </p>
+    <p>
+        <button type="submit" [disabled]="!myForm.valid">Submit</button>
+    </p>
+</form>
+
+<br>
+<br>
+<button (click)="loadBrano()">Carica brani</button>
+<table>
+    <thead>
+        <tr>
+            <th>Titolo</th>
+            <th>Autore</th>
+            <th>Numero ascolti</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let brano of brani">
+            <td>{{brano.branoMusicale.titolo}}</td>
+            <td>{{brano.branoMusicale.autore}}</td>
+            <td> {{brano.numeroAscolti}} </td>
+
+            <button (click)="sendAscolto(brano.branoMusicale.id)">MUUUUUSECA (ascoltare)</button>
+        </tr>
+    </tbody>
+</table>
